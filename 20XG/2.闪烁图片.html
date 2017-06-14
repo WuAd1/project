@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<img id="img" src="./images/1.png" style="display:block;">
+</body>
+</html>
+<script type="text/javascript">
+	var img = document.getElementById('img');
+	var str = true;
+
+	setInterval(function(){
+		if(str){
+			img.style.display = 'none';
+			str = false;
+		}else{
+			img.style.display = 'block';
+			str = true;
+		}
+	},200);
+</script>

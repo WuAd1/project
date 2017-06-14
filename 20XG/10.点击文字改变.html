@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		font{
+			cursor:pointer;
+		}
+	</style>
+</head>
+<body>
+	<p id="p">@哥偷东西被抓了真是<font id="font" style="font-size:40px;color:blue;">听者伤心，闻者落泪</font>啊！</p>
+</body>
+</html>
+<script type="text/javascript">
+	var p = document.getElementById('p');
+
+	p.onclick = function(){
+		p.innerHTML = '@哥偷东西被抓了真是<font style="font-size:40px;color:red;">喜闻乐见，大快人心</font>啊！';
+	}
+	p.onmouseout = function(){
+		p.innerHTML = '@哥偷东西被抓了真是<font style="font-size:40px;color:blue;">听者伤心，闻者落泪</font>啊！';
+	}
+</script>
+

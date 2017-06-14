@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		body{
+			background:#3A6EA5;
+		}
+		ul li{
+			list-style:none;
+			margin:5px 0;
+		}
+		ul li:hover{
+			background:blue;
+		}
+		a{
+			text-decoration:none;
+			color:black;
+			font-size:14px;
+		}
+		#menu{
+			background:#F0F0F0;
+			position:absolute;
+			width:150px;
+			display:none;
+		}
+		#menu2{
+			background:#F0F0F0;
+			position:absolute;
+			width:150px;
+			display:none;
+		}
+		#zm1{
+			position:absolute;
+			left:8px;
+			top:8px;
+		}
+		#zm2{
+			position:absolute;
+			left:8px;
+			top:90px;
+		}
+		#zm3{
+			position:absolute;
+			left:8px;
+			top:170px;
+		}
+		#open1{
+			position:absolute;
+			left:160px;
+			top:10px;
+			display:none;
+		}
+	</style>
+</head>
+<body>
+	<img src="./images/zm1.jpg" id="zm1">
+	<img src="./images/zm2.jpg" id="zm2">
+	<img src="./images/zm3.jpg" id="zm3">
+	<img src="./images/zm1open.jpg" id="open1">
+	<div id="menu">
+		<ul>
+			<li><a>查看(V)</a></li>
+			<li><a>排序方式(O)</a></li>
+			<li><a>刷新(E)</a></li>
+			<li><a>粘贴(P)</a></li>
+			<li><a>属性(R)</a></li>
+		</ul>
+	</div>
+	<div id="menu2">
+		<ul>
+			<li><a>打开(O)</a></li>
+			<li><a>管理(G)</a></li>
+			<li><a>删除(D)</a></li>
+			<li><a>重命名(M)</a></li>
+			<li><a>属性(R)</a></li>
+		</ul>
+	</div>
+</body>
+</html>
+<script type="text/javascript">
+	var menu = document.getElementById('menu');
+	var menu2 = document.getElementById('menu2');
+	var a = document.getElementsByTagName('a');
+	var zm1 = document.getElementById('zm1');
+	var zm2 = document.getElementById('zm2');
+	var zm3 = document.getElementById('zm3');
+	var open1 = document.getElementById('open1');
+	var str = true;
+	var timer;
+
+	document.oncontextmenu = function(e){
+		menu.style.left = e.clientX + 'px';
+		menu.style.top = e.clientY + 'px';
+		menu.style.display = 'block';
+		return false;
+	}
+
+	document.onclick = function(){
+		menu.style.display = 'none';
+		menu2.style.display = 'none';
+	}
+
+	zm1.oncontextmenu = zm2.oncontextmenu = zm3.oncontextmenu = function(){
+		menu2.style.display = 'block';
+	}
+
+	zm1.ondblclick = function(){
+		open1.style.display = 'block';
+	}
+	open1.onclick = function(){
+		open1.style.display = 'none';
+	}
+
+	a[1].onclick = function(){
+		if(str){
+			zm1.src = './images/zm3.jpg';
+			zm2.src = './images/zm2.jpg';
+			zm3.src = './images/zm1.jpg';
+			str = false;
+		}else{
+			zm1.src = './images/zm1.jpg';
+			zm2.src = './images/zm2.jpg';
+			zm3.src = './images/zm3.jpg';
+			str = true;
+		}
+	}
+	a[2].onclick = function(){
+		location.reload();
+	}
+</script>

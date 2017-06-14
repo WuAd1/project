@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<p id="p" style="font-size:30px;"></p>
+</body>
+</html>
+<script type="text/javascript">
+	var p = document.getElementById('p');
+	var str = '你这个登山包超耐磨啊！';
+
+	function pick(num,str){
+		var tmp = str.substr(0,num);
+		if(num >=3 && num <= 8){
+			var color = 'rgb('+Math.round(Math.random() * 255)+','+Math.round(Math.random() * 255)+','+Math.round(Math.random() * 255)+')';
+			str1 = '你这个大傻逼CNM啊！';
+			tmp += '<font style="color:' + color + ';font-size:60px;">' + str1.substr(num,1) + '</font>';
+		}else{
+			var color = 'rgb('+Math.round(Math.random() * 255)+','+Math.round(Math.random() * 255)+','+Math.round(Math.random() * 255)+')';
+			tmp += '<font style="color:' + color + ';font-size:60px;">' + str.substr(num,1) + '</font>';
+		}
+		tmp += str.substr(num+1);
+		return tmp;
+	}
+
+	var num = 0;
+	setInterval(function(){
+		if(num >= str.length){
+			num = 0;
+		}
+		p.innerHTML = pick(num,str);
+		num++;
+	},300);
+</script>

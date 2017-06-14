@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		#box{
+			width:200px;
+			height:200px;
+			background:lightblue;
+			transition:all 0.5s;
+		}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+</body>
+</html>
+<script type="text/javascript">
+	var box = document.getElementById('box');
+
+	var str = true;
+	box.onclick = function(){
+		if(str){
+			box.style.borderRadius = '50%';
+			str = false;
+		}else{
+			box.style.borderRadius = '';
+			str = true;
+		}
+		
+	}
+</script>

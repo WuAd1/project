@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body id="body">
+	<button id="btn" onclick="color();">点击开始摇摆</button>
+	<button onclick="clearInterval(timmer);">停停停</button>
+</body>
+</html>
+<script type="text/javascript">
+	var body = document.getElementById('body');
+
+	function color(){
+		timmer = setInterval(function(){
+			var r = Math.round(Math.random() * 255);
+			var g = Math.round(Math.random() * 255);
+			var b = Math.round(Math.random() * 255);
+			var a = Math.random();
+			body.style.background = "rgba(" + r + "," + g + "," + b + "," + a + ")";
+		},100)
+	}
+</script>
+

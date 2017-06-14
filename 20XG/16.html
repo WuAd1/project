@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		div{
+			float:left;
+			width:120px;
+			height:130px;
+			position:absolute;
+		}
+		#t1{
+			background:red;
+			display:none;
+		}
+		#t2{
+			background:green;
+			display:none;
+		}
+		#t3{
+			background:blue;
+			display:none;
+		}
+	</style>
+</head>
+<body>
+	<button id="btn1">红</button>
+	<button id="btn2">绿</button>
+	<button id="btn3">蓝</button>
+	<br />
+	<div id="t1"></div>
+	<div id="t2"></div>
+	<div id="t3"></div>
+</body>
+</html>
+<script type="text/javascript">
+	var btn1 = document.getElementById('btn1');
+	var btn2 = document.getElementById('btn2');
+	var btn3 = document.getElementById('btn3');
+	var t1 = document.getElementById('t1');
+	var t2 = document.getElementById('t2');
+	var t3 = document.getElementById('t3');
+
+	btn1.onclick = function(){
+		t1.style.display = 'block';
+		t2.style.display = 'none';
+		t3.style.display = 'none';
+	}
+	btn2.onclick = function(){
+		t1.style.display = 'none';
+		t2.style.display = 'block';
+		t3.style.display = 'none';
+	}
+	btn3.onclick = function(){
+		t1.style.display = 'none';
+		t2.style.display = 'none';
+		t3.style.display = 'block';
+	}
+</script>

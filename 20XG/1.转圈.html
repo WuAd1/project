@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>转圈</title>
+	<style type="text/css">
+		*{
+			padding:0;
+			margin:0;
+		}
+		#box{
+			width:30px;
+			height:30px;
+			position:absolute;
+			background:red;
+			border-radius:50%;
+		}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+</body>
+</html>
+<script type="text/javascript">
+	var box = document.getElementById('box');
+
+	function zhuan(){
+		var num = 0;
+		t1 = setInterval(function(){
+			num += 100;
+			box.style.left = num + 'px';
+
+			if(num == 500){
+				clearInterval(t1);
+				num = 0;
+				t2 = setInterval(function(){
+					num += 100;
+					box.style.top = num + 'px';
+
+					if(num == 500){
+						clearInterval(t2);
+						t3 = setInterval(function(){
+							num -= 100;
+							box.style.left = num + 'px';
+
+							if(num == 0){
+								clearInterval(t3);
+								num = 500;
+								t4 = setInterval(function(){
+									num -= 100;
+									box.style.top = num + 'px';
+									if(num == 0){
+										clearInterval(t4);
+										zhuan();
+									}
+								},100);
+							}
+						},100);
+					}
+				},100);
+			}
+		},100);
+	}
+
+	zhuan();
+	
+	
+</script>

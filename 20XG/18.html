@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		#box{
+			width:100px;
+			height:100px;
+			border-radius:50%;
+			background:black;
+            			position:absolute;
+            			left:0px;
+            			top:50px;
+		}
+	</style>
+</head>
+<body>
+	<button onclick="start()">开始</button>
+	<button onclick="stop()">暂停</button>
+	<div id="box" style="border-radius:50%;"></div>
+</body>
+</html>
+<script type="text/javascript">
+	var box = document.getElementById('box');
+	var timer;
+
+	function start(){
+		var cw = document.documentElement.clientWidth;
+		var ch = document.documentElement.clientHeight;
+		var x = 10;
+		var y = 10;
+
+		clearInterval(timer);
+		timer = setInterval(function(){
+			var left;
+			var top;
+
+			if(box.offsetLeft > (cw - box.offsetWidth) || box.offsetLeft < 0) x *= -1;
+			if(box.offsetTop > (cw - box.offsetHeight) || box.offsetTop < 0) y *= -1;
+
+			if(Math.abs( cw - (box.offsetWidth + box.offsetLeft) ) < x){
+				left = cw - box.offsetWidth;
+				x *= -1;
+			}
+			if(Math.abs( ch - (box.offsetHeight + box.offsetTop) ) < y){
+				top = ch - box.offsetHeight;
+				y *= -1;
+			}
+
+			left = box.offsetLeft + x;
+			top = box.offsetTop + y;
+
+			box.style.left = left + 'px';
+			box.style.top = top + 'px';
+
+			var r = Math.round(Math.random() * 255);
+			var g = Math.round(Math.random() * 255);
+			var b = Math.round(Math.random() * 255);
+			var a = Math.random();
+			box.style.background = "rgb(" + r + "," + g + "," + b + ")";
+		},50);
+	}
+
+	function stop(){
+		clearInterval(timer);
+	}
+</script>

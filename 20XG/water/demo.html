@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Index</title>
+	  <style>
+       body{background:lightblue}
+            #water li{
+                list-style:none;
+                float:left;
+            }
+            #water li div{
+                background:white;
+                padding:4px;
+                margin:2px;
+            }
+            img{border:2px solid black;}
+        </style>
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/javascript">
+/********************* 1 **********************/
+	var timer;
+	var pwidth = 220;
+	var num;
+	//动态创建UL
+	function addul(num)
+	{
+		var ul = document.createElement('ul');
+		ul.id = 'water';
+
+		//循环产生li
+		for(i= 0; i < num; i++) { 
+			var li = document.createElement('li');
+			ul.appendChild(li);
+		}
+		//将ul 添加到Body
+		document.body.appendChild(ul);
+	} 
+	
+
+/********************* 2 **********************/
+	//请求加载图片
+	function loadPic()
+	{ 
+		var ajax = new XMLHttpRequest();
+		ajax.open('get','./photo.php',true);
+		ajax.send();
+		ajax.onreadystatechange = function()
+		{ 
+			if(ajax.readyState == 4 && ajax.status == 200) { 
+				var result = ajax.responseText;
+				// alert(result);
+
+				//调用函数处理图片
+				createPic(result);
+			}
+		}
+	}
+
+
+/********************* 3 **********************/
+	//统一调用
+	window.onload = function()
+	{
+		num = cols();
+		//创建ul li 
+		addul(num);
+		//ajax请求加载数据
+		loadPic();
+	}
+
+
+/********************* 4 **********************/
+	//处理图片数据放入ul li 
+	function createPic(result)
+	{ 
+		//转换为对象
+		var picList = JSON.parse(result);
+		// alert(picList.length);
+		// alert(picList[4]);
+
+		//循环处理图片
+		for(var k=0,i = 0; i < picList.length; i++,k++) { 
+			if(k >= num) k = 0;
+			var imgName = picList[i];
+
+			//创建div
+			var div = document.createElement('div');
+			div.innerHTML = '<img src="./uploads/'+ imgName +'" width="220"/>';
+			
+			var ul = document.getElementById('water');
+			var lis = ul.children;
+			// console.dir(lis);
+			// lis[2].appendChild(div);
+			
+			//循环将div放入ul li 
+			// var mask = -1;
+			// for(j = 0; j < lis.length;j++) { 
+			// 	// alert(1);
+			// 	//获取li 的高度
+			// 	var height = lis[j].offsetHeight;
+			// 	// alert(height);
+				
+			// 	if(height  < mask || mask == -1) { 
+					
+			// 		mask = height;
+					
+					lis[k].appendChild(div);
+				// }
+			// }
+		}
+	}
+
+/********************* 5 **********************/
+
+	window.onscroll = function(){ 
+
+		clearTimeout(timer);
+		timer = setTimeout(function(){
+				//获取三个高度
+			var wHeight = document.documentElement.clientHeight;
+
+			var sHeight = document.documentElement.scrollTop || document.body.scrollTop;
+
+			var dHeight = document.documentElement.offsetHeight;
+
+			document.title = '窗'+wHeight + '文:'+ dHeight + '滚:' + sHeight;
+
+			//计算剩余高度   
+			//文档的高度 - (窗口高度 + 滚动条的高度)
+			if(dHeight - wHeight - sHeight < 400) {
+				loadPic();
+			} 
+		},100)
+	}
+
+/********************* 6 **********************/
+	//动态计算显示列数
+	function cols()
+	{
+		//获取浏览器宽度
+		var width = document.documentElement.clientWidth -20;
+
+		//计算列数
+		//窗口的宽 / 图片的宽  舍去取整
+		var num = Math.floor(width / ( pwidth + 20));
+		return num; 
+	}
+
+
+</script>

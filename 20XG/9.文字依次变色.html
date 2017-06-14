@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		#p{
+			font-size:50px;
+		}
+		.change{
+			font-size:60px;
+			color:red;
+		}
+	</style>
+</head>
+<body>
+	<p id="p">ギリギリeye</p>
+</body>
+</html>
+<script type="text/javascript">
+	var p = document.getElementById('p');
+	var content = p.innerHTML;
+	var i = 0;
+	setInterval(function(){
+		var str = '';
+		str += content.substr(0,i);
+		str += '<b class="change">' + content[i] + '</b>';
+		str += content.substr(i+1);
+		p.innerHTML = str;
+		i++;
+		if(i >= content.length){
+			i = 0;
+		}
+	},100);
+</script>

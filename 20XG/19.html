@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		#box{
+			width:200px;
+			height:200px;
+			border-radius:100px;
+			background:orange;
+		}
+		#img{
+			width:180px;
+			height:180px;
+			border-radius:90px;
+			margin:10px;
+			overflow:hidden;
+			transform:rotate(0deg);
+		}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<img src="./images/music.png" id="img">
+		<button onclick="start()">开始</button>
+		<button onclick="stop()">暂停</button>
+	</div>
+</body>
+</html>
+<script type="text/javascript">
+	var box = document.getElementById('box');
+	var img = document.getElementById('img');
+	var timer;
+	var num = 0;
+
+	function start(){
+		clearInterval(timer);
+		timer = setInterval(function(){
+			img.style.transform = 'rotate('+num+'deg)';
+			num++;
+			if(num > 360){
+				num = 0;
+			}
+		},50);
+	}
+
+	function stop(){
+		clearInterval(timer);
+	}
+</script>

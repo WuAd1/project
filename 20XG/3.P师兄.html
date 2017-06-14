@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<img id="img" src="./images/2.png">
+</body>
+</html>
+<script type="text/javascript">
+	var img = document.getElementById('img');
+	var num = 1;
+
+	setInterval(function(){
+		switch(num){
+			case num:
+				img.src = './images/'+num+'.jpg';
+				num++;
+				if(num > 12){
+					num = 1;
+				}
+		}
+	},100);
+</script>

@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		#big{
+			width:470px;
+			height:20px;
+			border:1px solid lightgray;
+			transition:all 5s;
+			display:none;
+		}
+		#small{
+			height:20px;
+			background:lightgreen;
+			display:none;
+		}
+	</style>
+</head>
+<body>
+	第一會所新片@SIS001@(MOODYZ)(MIDE-391)九重かんな<button onclick="go()">下载</button>
+	<div id="big">
+		<div id="small"></div>
+	</div>
+</body>
+</html>
+<script type="text/javascript">
+	var big = document.getElementById('big');
+	var small = document.getElementById('small');
+	var num = 0;
+
+	function go(){
+		big.style.display = 'block';
+		small.style.display = 'block';
+		timer = setInterval(function(){
+			if(num > 100){
+				clearInterval(timer);
+				small.style.width = big.style.width = 200+'px';
+				small.style.height = big.style.height = 200+'px';
+				small.style.borderRadius = big.style.borderRadius = 50 + '%';
+				small.innerHTML = '√';
+				small.style.textAlign = 'center';
+				small.style.lineHeight = '200px';
+				small.style.fontSize = '60px';
+				small.style.color = 'white';
+				alert('五年模拟三年高考.avi下载完毕！');
+			}else{
+				small.style.width = num + '%';
+				small.innerHTML = num + '%';
+				num++;
+			}
+		},10);
+	}
+	
+</script>
